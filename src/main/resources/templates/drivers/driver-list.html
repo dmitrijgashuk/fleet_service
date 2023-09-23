@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/main-template.css" rel="stylesheet">
+    <title th:text="${title} ?: 'Drivers'"></title>
+</head>
+<body>
+
+<th:block th:include="/layout/head-block.html :: main_navbar"></th:block>
+
+<main class="container">
+    <h2 th:text="${mainText} ?: 'You can see list drivers'"></h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th> id</th>
+            <th> firstName</th>
+            <th> lastName</th>
+            <th> phone</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${driverList} == null">
+            <td>id_test</td>
+            <td>firstName_test</td>
+            <td>lastName_test</td>
+            <td>phone_test</td>
+        </tr>
+        <tr th:each="driver : ${driverList}">
+            <td><span th:text="${driver.id}"></span></td>
+            <td><span th:text="${driver.firstName}"></span></td>
+            <td><span th:text="${driver.lastName}"></span></td>
+            <td><span th:text="${driver.phone}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+    <nav th:if="${driverList.size() > 1}" aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" th:each="pageNamber : ${#numbers.sequence(0 ,driverList.size()-1)}">
+                <a class="page-link" th:href="@{/all(page=${pageNamber}, size=${3})}" th:text="${pageNamber}"></a>
+            </li>
+        </ul>
+    </nav>
+    <!--<div th:if="${driverList.size() > 1}">
+        <ul>
+            <li  th:each="pageNamber : ${#numbers.sequence(0 ,driverList.size()-1)}">
+                <a class="page-link" th:href="@{/all(page=${pageNamber}, size=${3})}" th:text="${pageNamber}"></a>
+            </li>
+        </ul>
+    </div>-->
+    <button type="button" class="btn btn-outline-primary">
+        <a href="add-repair"><img src="/image/download.png" width="25" height="25"></a>
+    </button>
+</main>
+
+<th:block th:include="/layout/footer-block.html :: main_footer"></th:block>
+
+</body>
+</html>

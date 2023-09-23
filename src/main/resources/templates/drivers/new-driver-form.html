@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/main-template.css" rel="stylesheet">
+    <title>New Driver Form</title>
+</head>
+<body>
+<th:block th:include="/layout/head-block.html :: main_navbar"></th:block>
+<main class="container">
+    <form class="row g-3" action="#" th:action="@{/drivers}" method="post" th:object="${driver}">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName">
+        </div>
+        <div class="col-md-6">
+            <label for="secondName" class="form-label">Second Name</label>
+            <input type="text" class="form-control" id="secondName">
+        </div>
+        <div class="col-12">
+            <label for="phone" class="form-label">Phone number</label>
+            <input type="text" class="form-control" id="phone" placeholder="+380977535184">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Add New Driver</button>
+        </div>
+    </form>
+</main>
+<th:block th:include="/layout/footer-block.html :: main_footer"></th:block>
+</body>
+</html>

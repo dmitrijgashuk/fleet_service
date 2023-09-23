@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/main-template.css" rel="stylesheet">
+    <title>Main page</title>
+
+</head>
+<body>
+    <th:block th:include="/layout/head-block.html :: main_navbar"></th:block>
+
+    <main class="container">
+        <h4>It is a main page</h4>
+        <p>Це вміст центральної частини сторінки.</p>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </main>
+
+    <th:block th:include="/layout/footer-block.html :: main_footer"></th:block>
+</body>
+</html>

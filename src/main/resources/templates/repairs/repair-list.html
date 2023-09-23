@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/main-template.css" rel="stylesheet">
+    <title th:text="${title} ?: 'All rapairs list'"></title>
+</head>
+<body>
+
+<th:block th:include="/layout/head-block.html :: main_navbar"></th:block>
+
+<main class="container">
+    <h2>List of repair sheets</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> id </th>
+                <th> repairDate </th>
+                <th> vehicle </th>
+                <th> component </th>
+                <th> count </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${repairSheets} == null">
+                <td>id_test</td>
+                <td>repairDate_test</td>
+                <td>vehicle_test</td>
+                <td>component_test</td>
+                <td>count_test</td>
+            </tr>
+            <tr th:each="repair : ${repairSheets}">
+                <td><span th:text="${repair.id}"></span></td>
+                <td><span th:text="${repair.repairDate}"></span></td>
+                <td><span th:text="${repair.vehicle.registrationNumber}"></span></td>
+                <td><span th:text="${repair.components.description}"></span></td>
+                <td><span th:text="${repair.amount}"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-outline-primary">
+        <a href="add-repair"><img src="/image/download.png" width="25" height="25"></a>
+    </button>
+</main>
+
+<th:block th:include="/layout/footer-block.html :: main_footer"></th:block>
+
+</body>
+</html>
